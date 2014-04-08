@@ -13,6 +13,17 @@ public class Promocion {
 	ListaTuplas<String,String> resolver_ej1(){
 		//implementar
 		//Se debe pisar listaMateriales.
+		
+		/*for(int i = 0; i < listaMateriales.tamaño();i++)
+		{
+			int temp = listaPrecios.buscar(listaMateriales.iesimo(i).getE1());
+			for(int j = i; j >= 0 && temp < a[j]; j-- )
+			{
+				a[j+1] = a[j]
+			}
+			a[j] = temp;
+		}*/
+		
 		return listaMateriales;
 	}
 	
