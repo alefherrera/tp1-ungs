@@ -15,7 +15,7 @@ public class SyE {
 		tamanio = n;
 		elementos = new Elementos();
 		jugadores = new ListaTuplas<String, Integer>();
-		dado = new Dado(6);
+		dado = new Dado(7);
 	}
 
 	public String ganador() {// devuelve el nro de jugador ganador o 0 si no hay
