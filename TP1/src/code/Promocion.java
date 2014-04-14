@@ -89,7 +89,7 @@ public class Promocion {
 
 		listaPrecios = quicksort(listaPrecios);
 
-		System.out.print(listaPrecios.toString());
+		//System.out.print(listaPrecios.toString());
 
 		listaMateriales = new ListaTuplas<String, String>();
 		for (int i = 0; i < listaPrecios.tamaño(); i += 2) {
@@ -101,7 +101,7 @@ public class Promocion {
 	}
 
 	ListaTuplas<String, Integer> quicksort(ListaTuplas<String, Integer> lista) {
-		System.out.print(lista.tamaño());
+		//System.out.print(lista.tamaño());
 		if (lista.tamaño() <= 1) {
 			return lista;
 		}
@@ -123,7 +123,7 @@ public class Promocion {
 		}
 		ListaTuplas<String, Integer> concat = new ListaTuplas<String, Integer>();
 
-		return concat.concat(quicksort(menor), pivot, quicksort(mayor));
+		return concat.concat(quicksort(mayor), pivot ,quicksort(menor));
 	}
 
 	@Override

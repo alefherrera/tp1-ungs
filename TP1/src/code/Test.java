@@ -42,7 +42,7 @@ public class Test {
 		
 		Promocion promocion = new Promocion(listaMaterialesTEST, listaPreciosTEST);
 		
-		System.out.println(promocion.resolver_ej1().toString());
+		System.out.println(promocion.resolver_ej1v2().toString());
 		//<Puerta,Ladrillo>
 		//<Columna,Ventana>
 		//<Escalera,Cisterna>
@@ -76,7 +76,7 @@ public class Test {
 	public static void main(String[] args) {
 		test1();
 		test2();
-		test3();
+		//test3();
 		
 	}
 
