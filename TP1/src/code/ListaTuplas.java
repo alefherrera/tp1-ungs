@@ -35,6 +35,16 @@ public class ListaTuplas<E1,E2> {
 
 	}
 	
+	public void concat(ListaTuplas<E1,E2>... listas)
+	{
+		for(ListaTuplas<E1, E2> arg : listas)
+		{
+			for (int i = 0; i < arg.tamaño(); i++) {
+				lTuplas.add(arg.iesimo(i));
+			}
+		}
+	}
+	
 	@Override
 	public String toString()
 	{

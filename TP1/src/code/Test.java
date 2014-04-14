@@ -67,9 +67,6 @@ public class Test {
 			lPre.agregar(new Tupla<String,Integer>("M" +i.toString(),i));
 		}
 		
-		//System.out.println(lPre.toString());
-		//System.out.println(lMat.toString());
-		
 		Promocion promocion = new Promocion(lMat, lPre);
 		
 		System.out.println(promocion.toString());

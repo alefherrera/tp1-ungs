@@ -5,7 +5,7 @@ import code.Tupla;
 
 public class SyE {
 
-	public ListaTuplas<String, Integer> jugadores;
+	private ListaTuplas<String, Integer> jugadores;
 	private Integer tamanio;
 	private Elementos elementos;
 	private Dado dado;
@@ -17,7 +17,7 @@ public class SyE {
 		tamanio = n;
 		elementos = new Elementos();
 		jugadores = new ListaTuplas<String, Integer>();
-		dado = new Dado(7);
+		dado = new Dado(6);
 	}
 
 	public String ganador() {// devuelve el nro de jugador ganador o 0 si no hay
@@ -51,12 +51,14 @@ public class SyE {
 		Integer avanza, posicionactual;
 		Tupla<String, Integer> jugador;
 		boolean hayganador = false;
-
+		//mientras nadie haya ganado, va a seguir jugando
 		while (!hayganador) {
 			for (int i = 0; i < jugadores.tamaño(); i++) {
 				avanza = dado.tirar_dado();
 				jugador = jugadores.iesimo(i);
 				posicionactual = jugador.getE2();
+				// seteo la nueva posicion, si hay escalera o serpiente se mueve
+				// a donde lo lleven, en el caso que no, avanza normalmente
 				jugador.setE2(elementos.moverse(avanza + posicionactual));
 				System.out.println("Jugador: " + jugador.getE1() + " Dado: "
 						+ avanza + " PosicionActual: " + posicionactual
@@ -68,7 +70,6 @@ public class SyE {
 				}
 			}
 		}
-
 	}
 
 	public String ver() {// muestra el estado del tablero y los jugadores
