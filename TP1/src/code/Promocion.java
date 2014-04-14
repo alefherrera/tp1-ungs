@@ -1,5 +1,7 @@
 package code;
 
+import java.util.ArrayList;
+
 public class Promocion {
 
 	ListaTuplas<String, String> listaMateriales;
@@ -17,7 +19,7 @@ public class Promocion {
 		// Se debe pisar listaMateriales.
 		String nombretmp;
 		Integer preciotmp;
-		for (int i = 1; i < listaPrecios.tamaño(); i++) {
+		for (int i = 1; i < listaPrecios.tamaÃ±o(); i++) {
 
 			nombretmp = listaPrecios.iesimo(i).getE1();
 			preciotmp = listaPrecios.iesimo(i).getE2();
@@ -37,13 +39,39 @@ public class Promocion {
 
 			}
 		}
+		/* listaMateriales = new ListaTuplas<String, String>();
+                for (int i = 0; i < listaPrecios.tamaÃ±o(); i += 2) {
+                        listaMateriales.agregar(new Tupla<String, String>(listaPrecios
+                                        .iesimo(i).getE1(), listaPrecios.iesimo(i + 1).getE1()));
+                }
 
-		listaMateriales = new ListaTuplas<String, String>();
-		for (int i = 0; i < listaPrecios.tamaño(); i += 2) {
-			listaMateriales.agregar(new Tupla<String, String>(listaPrecios
-					.iesimo(i).getE1(), listaPrecios.iesimo(i + 1).getE1()));
+                return listaMateriales;*/
+		
+		return generarListaMateriales();
+	}
+	
+	private ListaTuplas<String, String> generarListaMateriales()
+	{
+		ArrayList<String> T = new ArrayList<String>();
+		
+		for (int i = 0; i < listaMateriales.tamaÃ±o(); i++) {
+			T.add(listaMateriales.iesimo(i).getE1());
+			T.add(listaMateriales.iesimo(i).getE2());
 		}
-
+		listaMateriales = new ListaTuplas<String,String>();
+		ArrayList<String> T2 = new ArrayList<String>();
+		for (int i = 0; i < listaPrecios.tamaÃ±o(); i ++) {			
+			if (T.contains(listaPrecios.iesimo(i).getE1()))
+			{
+				T2.add(listaPrecios.iesimo(i).getE1());
+			}
+			if (T2.size() == 2)
+			{
+				listaMateriales.agregar(new Tupla<String, String>(T2.get(0), T2.get(1)));
+				T2 = new ArrayList<String>();
+			}
+		}	
+		
 		return listaMateriales;
 	}
 
@@ -51,10 +79,10 @@ public class Promocion {
 	ListaTuplas<String, String> resolver_ej3() {
 		String nombretmp;
 		Integer preciotmp;
-		for (int i = 1; i < listaPrecios.tamaño(); i++) {
+		for (int i = 1; i < listaPrecios.tamaÃ±o(); i++) {
 			// Si no se hacen cambios en la vuelta, esta ordenado y corto el for
 			Boolean ordenado = true;
-			for (int j = 1; j < listaPrecios.tamaño(); j++) {
+			for (int j = 1; j < listaPrecios.tamaÃ±o(); j++) {
 				if (listaPrecios.iesimo(j).getE2() > listaPrecios.iesimo(j - 1)
 						.getE2()) {
 					nombretmp = listaPrecios.iesimo(j).getE1();
@@ -75,13 +103,7 @@ public class Promocion {
 			}
 		}
 
-		listaMateriales = new ListaTuplas<String, String>();
-		for (int i = 0; i < listaPrecios.tamaño(); i += 2) {
-			listaMateriales.agregar(new Tupla<String, String>(listaPrecios
-					.iesimo(i).getE1(), listaPrecios.iesimo(i + 1).getE1()));
-		}
-
-		return listaMateriales;
+		return generarListaMateriales();
 	}
 
 	//QUICK SORT
@@ -91,22 +113,16 @@ public class Promocion {
 
 		//System.out.print(listaPrecios.toString());
 
-		listaMateriales = new ListaTuplas<String, String>();
-		for (int i = 0; i < listaPrecios.tamaño(); i += 2) {
-			listaMateriales.agregar(new Tupla<String, String>(listaPrecios
-					.iesimo(i).getE1(), listaPrecios.iesimo(i + 1).getE1()));
-		}
-
-		return listaMateriales;
+		return generarListaMateriales();
 	}
 
 	ListaTuplas<String, Integer> quicksort(ListaTuplas<String, Integer> lista) {
-		//System.out.print(lista.tamaño());
-		if (lista.tamaño() <= 1) {
+		//System.out.print(lista.tamaÃ±o());
+		if (lista.tamaÃ±o() <= 1) {
 			return lista;
 		}
 
-		Integer ipivot = (lista.tamaño() - 1) / 2;
+		Integer ipivot = (lista.tamaÃ±o() - 1) / 2;
 
 		ListaTuplas<String, Integer> menor = new ListaTuplas<String, Integer>();
 		ListaTuplas<String, Integer> mayor = new ListaTuplas<String, Integer>();
@@ -114,7 +130,7 @@ public class Promocion {
 
 		pivot.agregar(lista.iesimo(ipivot));
 
-		for (int i = 0; i < lista.tamaño(); i++) {
+		for (int i = 0; i < lista.tamaÃ±o(); i++) {
 			if (lista.iesimo(i).getE2() < lista.iesimo(ipivot).getE2()) {
 				menor.agregar(lista.iesimo(i));
 			} else if (lista.iesimo(i).getE2() > lista.iesimo(ipivot).getE2()) {
@@ -132,7 +148,7 @@ public class Promocion {
 		Integer precioM1 = 0;
 		Integer precioM2 = 0;
 
-		for (int i = 0; i < listaMateriales.tamaño(); i++) {
+		for (int i = 0; i < listaMateriales.tamaÃ±o(); i++) {
 			precioM1 = listaPrecios.buscar(listaMateriales.iesimo(i).getE1());
 			precioM2 = listaPrecios.buscar(listaMateriales.iesimo(i).getE2());
 
