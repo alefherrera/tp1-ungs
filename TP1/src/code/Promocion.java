@@ -11,6 +11,7 @@ public class Promocion {
 		this.listaPrecios = listaPrecios;
 	}
 
+	// INSERTION SORT
 	ListaTuplas<String, String> resolver_ej1() {
 		// implementar
 		// Se debe pisar listaMateriales.
@@ -46,6 +47,7 @@ public class Promocion {
 		return listaMateriales;
 	}
 
+	// BUBBLE SORT
 	ListaTuplas<String, String> resolver_ej3() {
 		String nombretmp;
 		Integer preciotmp;
@@ -80,6 +82,48 @@ public class Promocion {
 		}
 
 		return listaMateriales;
+	}
+
+	//QUICK SORT
+	ListaTuplas<String, String> resolver_ej1v2() {
+
+		listaPrecios = quicksort(listaPrecios);
+
+		System.out.print(listaPrecios.toString());
+
+		listaMateriales = new ListaTuplas<String, String>();
+		for (int i = 0; i < listaPrecios.tamaño(); i += 2) {
+			listaMateriales.agregar(new Tupla<String, String>(listaPrecios
+					.iesimo(i).getE1(), listaPrecios.iesimo(i + 1).getE1()));
+		}
+
+		return listaMateriales;
+	}
+
+	ListaTuplas<String, Integer> quicksort(ListaTuplas<String, Integer> lista) {
+		System.out.print(lista.tamaño());
+		if (lista.tamaño() <= 1) {
+			return lista;
+		}
+
+		Integer ipivot = (lista.tamaño() - 1) / 2;
+
+		ListaTuplas<String, Integer> menor = new ListaTuplas<String, Integer>();
+		ListaTuplas<String, Integer> mayor = new ListaTuplas<String, Integer>();
+		ListaTuplas<String, Integer> pivot = new ListaTuplas<String, Integer>();
+
+		pivot.agregar(lista.iesimo(ipivot));
+
+		for (int i = 0; i < lista.tamaño(); i++) {
+			if (lista.iesimo(i).getE2() < lista.iesimo(ipivot).getE2()) {
+				menor.agregar(lista.iesimo(i));
+			} else if (lista.iesimo(i).getE2() > lista.iesimo(ipivot).getE2()) {
+				mayor.agregar(lista.iesimo(i));
+			}
+		}
+		ListaTuplas<String, Integer> concat = new ListaTuplas<String, Integer>();
+
+		return concat.concat(quicksort(menor), pivot, quicksort(mayor));
 	}
 
 	@Override
